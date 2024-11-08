@@ -132,6 +132,7 @@ export default function EnhancedKidneyClassification() {
       }
     } catch (err) {
       setError("An error occurred during classification. Please try again.");
+      console.error(err);
     } finally {
       setIsLoading(false);
     }
@@ -304,11 +305,7 @@ export default function EnhancedKidneyClassification() {
       )}
 
       {result && (
-        <Card
-          className={
-            result.classification === "Normal" ? "bg-green-50" : "bg-red-50"
-          }
-        >
+        <Card className={`bg-transparent shadow-inner`}>
           <CardHeader>
             <CardTitle>Report</CardTitle>
           </CardHeader>
@@ -325,13 +322,19 @@ export default function EnhancedKidneyClassification() {
                   ? "border-green-400 shadow-green-400"
                   : "border-red-400 shadow-red-400"
               }
-               rounded-sm shadow-md`}
+               rounded-sm shadow-lg`}
             >
-              <p className="text-lg">
-                Classification: {result.classification.toLocaleLowerCase()}
+              <p className="text-lg text-black/70">
+                Classification:{" "}
+                <span className="font-semibold text-black">
+                  {result.classification.toLocaleLowerCase()}
+                </span>
               </p>
-              <p className="text-lg">
-                Confidence: {result.confidence.toFixed(2)}%
+              <p className="text-lg  text-black/70">
+                Confidence:{" "}
+                <span className="font-semibold text-black">
+                  {result.confidence.toFixed(2)}%
+                </span>
               </p>
               <Button className="mt-4" onClick={() => downloadReport(result)}>
                 <Download className="mr-2 h-4 w-4" /> Download Report
