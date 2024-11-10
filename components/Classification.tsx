@@ -100,7 +100,7 @@ export default function EnhancedKidneyClassification() {
       return;
     }
     const reader = new FileReader();
-    reader.onload = (e) => {
+    reader.onload = () => {
       setSelectedFile(file);
       setError(null);
     };
