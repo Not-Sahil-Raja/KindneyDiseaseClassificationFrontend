@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -46,12 +45,6 @@ const Articulate = localFont({
   variable: "--font-articulate",
 });
 
-export const metadata: Metadata = {
-  title: "KidneyHealth_ai",
-  description:
-    "KidneyHealth_ai is a web application that uses machine learning to classify kidney diseases.",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -62,7 +55,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${kindSans.variable} ${Baguede.variable} ${Articulate.className} antialiased`}
       >
-        <div className=" flex flex-col w-full h-full relative ">
+        <div className="flex flex-col w-full h-full relative">
           <Navbar />
           <div>{children}</div>
         </div>
