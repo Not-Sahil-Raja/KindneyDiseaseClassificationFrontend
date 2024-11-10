@@ -12,6 +12,10 @@ import Link from "next/link";
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import upload_kidneyDiseaseAI from "@/public/upload_kidneyDiseaseAI.gif";
+import classify_kidneyDiseaseAI from "@/public/classify_kidneyDiseaseAI.gif";
+import result_kidneyDiseaseAI from "@/public/result_kidneyDiseaseAI.gif";
 
 const Home = () => {
   const ref1 = useRef(null);
@@ -59,11 +63,11 @@ const Home = () => {
           animate={{ opacity: 1, filter: "blur(0px)" }}
           transition={{ duration: 0.7, delay: 0.2, ease: "easeInOut" }}
         >
-          <p className="lg:text-sm 2xl:text-lg font-medium font-Articulate pb-2 pl-3 text-black/60">
+          <p className=" text-sm lg:text-base 2xl:text-lg font-medium font-Articulate pb-2 pl-3 text-black/60 ">
             Early Detection for a Healthier Future
           </p>
-          <h1 className=" 2xl:text-[8rem]">Smart</h1>
-          <h1 className="2xl:text-[8rem]">Kidney Health</h1>
+          <h1 className=" 2xl:text-[8rem] lg:text-[5rem]">Smart</h1>
+          <h1 className="2xl:text-[8rem] lg:text-[5rem]">Kidney Health</h1>
         </motion.div>
         <motion.div
           className="absolute bottom-[10%] right-[5%] text-white/60 font-medium rounded-xl max-w-60 px-6 py-5 backdrop-blur-lg bg-[#837b7b4d] border"
@@ -81,7 +85,7 @@ const Home = () => {
           </div>
         </motion.div>
         <motion.div
-          className="absolute bottom-[5%] right-[35%]"
+          className="absolute bottom-[5%] lg:right-[30%] right-[28%]"
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.75 }}
@@ -132,23 +136,62 @@ const Home = () => {
               </div>
             </motion.div>
             <motion.div
-              className="h-full flex-[2] bg-red-300"
+              className="h-full flex-[2] relative"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
-            ></motion.div>
+            >
+              <Image
+                src={upload_kidneyDiseaseAI}
+                alt="Kidney Image 1"
+                className=" w-full h-full object-cover rounded-lg"
+                unoptimized
+              />
+              <div
+                className="absolute inset-0 w-full h-full z-[1]  rounded-lg"
+                style={{
+                  boxShadow: "inset 0 0 20px 15px rgba(255, 255, 255, 0.5)",
+                }}
+              />
+            </motion.div>
             <motion.div
-              className="h-full flex-[2] bg-green-300"
+              className="h-full flex-[2] relative"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
-            ></motion.div>
+            >
+              <Image
+                src={classify_kidneyDiseaseAI}
+                alt="Kidney Image 1"
+                className=" w-full h-full object-cover rounded-lg"
+                unoptimized
+              />
+              <div
+                className="absolute inset-0 w-full h-full z-[1]  rounded-lg"
+                style={{
+                  boxShadow: "inset 0 0 20px 15px rgba(255, 255, 255, 0.5)",
+                }}
+              />
+            </motion.div>
             <motion.div
-              className="h-full flex-[2] bg-blue-300"
+              className="h-full flex-[2] relative"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.6 }}
-            ></motion.div>
+            >
+              <Image
+                src={result_kidneyDiseaseAI}
+                alt="Kidney Image 1"
+                className=" w-full h-full object-cover rounded-lg"
+                unoptimized
+              />
+              <div
+                className="absolute inset-0 w-full h-full z-[1]  rounded-lg"
+                style={{
+                  boxShadow: "inset 0 0 20px 15px rgba(255, 255, 255, 0.5)",
+                }}
+              />
+            </motion.div>
           </div>
         </div>
       </div>
