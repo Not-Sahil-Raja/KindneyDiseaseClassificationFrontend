@@ -478,7 +478,7 @@ export default function EnhancedKidneyClassification() {
                             Is this a CT Scan ?
                           </p>
                           <p className=" font-bold text-black pt-1">
-                            {result.ctScanConfidence >= 0.5
+                            {result.ctScanConfidence >= 50
                               ? "High Confidence"
                               : "Low Confidence"}
                           </p>
