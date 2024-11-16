@@ -32,7 +32,7 @@ type ClassificationResult = {
   date: Date;
   classification: string;
   ctScanConfidence: number;
-  confidence: number;
+  confidence: number | string;
   imageUrl: string;
 };
 
@@ -451,11 +451,13 @@ export default function EnhancedKidneyClassification() {
                             Confidence Level
                           </p>
                           <p className=" font-bold text-black pt-1">
-                            {result.confidence >= 0.75
-                              ? "High Confidence"
-                              : result.confidence >= 0.5
-                              ? "Medium Confidence"
-                              : "Low Confidence"}
+                            {typeof result.confidence === "number"
+                              ? result.confidence >= 0.75
+                                ? "High Confidence"
+                                : result.confidence >= 0.5
+                                ? "Medium Confidence"
+                                : "Low Confidence"
+                              : "Not Available"}
                           </p>
                         </div>
                         <div className=" border-l-2 bg-transparent text-[#2e2d2d] font-bold  px-2 leading-none flex justify-center items-center ">
@@ -476,7 +478,7 @@ export default function EnhancedKidneyClassification() {
                             Is this a CT Scan ?
                           </p>
                           <p className=" font-bold text-black pt-1">
-                            {result.confidence >= 0.5
+                            {result.ctScanConfidence >= 0.5
                               ? "High Confidence"
                               : "Low Confidence"}
                           </p>
