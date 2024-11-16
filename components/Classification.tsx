@@ -31,6 +31,7 @@ type ClassificationResult = {
   id: string;
   date: Date;
   classification: string;
+  ctScanConfidence: number;
   confidence: number;
   imageUrl: string;
 };
@@ -134,6 +135,7 @@ export default function EnhancedKidneyClassification() {
         date: new Date(),
         classification: response.data.result,
         confidence: response.data.confidence,
+        ctScanConfidence: response.data.ctScanConfidence,
         imageUrl: selectedFile ? URL.createObjectURL(selectedFile) : "",
       };
       setResult(CurrentResult);
@@ -157,7 +159,11 @@ export default function EnhancedKidneyClassification() {
       Kidney Disease Classification Report
       Date: ${result.date.toLocaleString()}
       Classification: ${result.classification}
-      Confidence: ${result.confidence.toFixed(2)}%
+      Confidence: ${
+        typeof result.confidence === "number"
+          ? result.confidence.toFixed(2) + "%"
+          : result.confidence
+      }
     `;
     const blob = new Blob([report], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
@@ -179,7 +185,7 @@ export default function EnhancedKidneyClassification() {
     <>
       {" "}
       <div
-        className="h-[100vh] flex items-center justify-evenly pt-20 overflow-hidden"
+        className=" md:h-[100vh] h-fit min-h-screen flex xl:flex-row flex-col space-y-8 md:space-y-0 sm:overflow-y-auto pb-5 items-center justify-evenly pt-20 xl:pt-20 xl:overflow-hidden"
         style={{
           background:
             "linear-gradient(145deg, #f0f4f3, #e0e6e4 40%, #d0d8d6 70%, #f0f4f3), radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.1))",
@@ -193,22 +199,22 @@ export default function EnhancedKidneyClassification() {
         />
 
         <motion.div
-          className="flex w-fit h-full justify-center items-center z-10"
+          className="flex md:w-fit md:mb-0  h-full justify-center items-center z-10"
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
           <div
-            className="max-w-lg mx-auto  space-y-6 bg-white rounded-lg border-4 border-white shadow-lg "
+            className="md:w-fit 2xl:w-[24vw] w-[98%] mb-10 xl:mb-0 mx-auto space-y-6 bg-white rounded-lg border-4 border-white shadow-lg "
             style={{
               boxShadow: "inset 0 0 0  1.2px #d2dfd9",
             }}
           >
             <div className=" font-Articulate">
-              <h1 className="text-2xl font- font-bold text-center mt-8">
+              <h1 className="md:text-2xl text-lg font- font-bold text-center mt-8">
                 Upload Kidney Scan
               </h1>
-              <p className="text-center text-gray-500 mt-2 leading-3 tracking-wide">
+              <p className=" text-sm md:text-base text-center text-gray-500 mt-2 md:leading-3 leading-[1] tracking-wide">
                 Diagnose your image with a kidney scan!
               </p>
             </div>
@@ -244,7 +250,7 @@ export default function EnhancedKidneyClassification() {
                 </div>
               )}
               <Upload className="mx-auto  text-gray-400" aria-hidden="true" />
-              <p className="mt-2  text-black/60 font-Articulate font-medium">
+              <p className=" text-sm md:text-base leading-tight mt-2 text-black/60 font-Articulate font-medium">
                 Drag and drop your kidney scan image here,
                 <br />
                 or click to select
@@ -344,7 +350,9 @@ export default function EnhancedKidneyClassification() {
                             </p>
                             <p className="text-sm text-gray-500">
                               {item.date.toLocaleString()} - Confidence:{" "}
-                              {item.confidence.toFixed(2)}%
+                              {typeof item.confidence === "number"
+                                ? item.confidence.toFixed(2) + "%"
+                                : item.confidence}
                             </p>
                           </div>
                           <Button
@@ -375,7 +383,7 @@ export default function EnhancedKidneyClassification() {
         {/* Result part */}
         <AnimatePresence>
           <motion.div
-            className=" w-[44vw] px-4 min-h-96 h-fit py-5  rounded-xl shadow-lg backdrop-blur-md border flex items-center justify-center"
+            className=" md:w-fit xl:w-[47vw] w-[98%] mt-12  px-1 py-1 md:px-4 md:py-5 xl:min-h-96 h-fit  rounded-xl shadow-lg backdrop-blur-md border flex items-center justify-center"
             style={{
               background:
                 "linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2) 40%, rgba(255, 255, 255, 0.4) 70%, rgba(255, 255, 255, 0.4)), radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1))",
@@ -394,8 +402,8 @@ export default function EnhancedKidneyClassification() {
                 transition={{ duration: 0.8, ease: "easeInOut" }}
               >
                 <Card className="bg-white shadow py-5 w-full font-Articulate">
-                  <div className=" flex justify-evenly gap-3  px-5">
-                    <div className="w-full flex flex-col   rounded-sm ">
+                  <div className="flex flex-col md:flex-row justify-evenly gap-3  px-5">
+                    <div className="w-full flex flex-col rounded-sm 2xl:pr-8">
                       <div className=" pt-3">
                         <p className=" font-bold text-xl">Result Ready</p>
                         <p className=" text-xs line-clamp-1 text-black/60 font-medium">
@@ -403,11 +411,14 @@ export default function EnhancedKidneyClassification() {
                         </p>
                       </div>
                       <div
-                        className=" flex mx-2 mt-3 rounded-lg px-4 py-3 leading-none border border-[#ffffff]"
+                        className=" flex md:mx-2 md:mt-3 mt-3 rounded-lg px-4 py-3 leading-none border border-[#ffffff]"
                         style={{
                           background:
                             result.classification === "NORMAL"
                               ? "linear-gradient(145deg, rgba(102, 178, 119, 0.8), rgba(102, 178, 119, 0.8) 40%, rgba(102, 178, 119, 0.6) 70%, rgba(255, 255, 255, 0.6)), radial-gradient(circle at 50% 50%, rgba(102, 178, 119, 0.2), rgba(255, 255, 255, 0.2))"
+                              : result.classification ===
+                                "This is not a CT scan image"
+                              ? "linear-gradient(145deg, rgba(105, 105, 105, 0.65), rgba(105, 105, 105, 0.7) 40%, rgba(64, 64, 64, 0.4) 70%, rgba(255, 255, 255, 0.6)), radial-gradient(circle at 50% 50%, rgba(105, 105, 105, 0.2), rgba(255, 255, 255, 0.2))"
                               : "linear-gradient(145deg, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0.8) 40%, rgba(255, 0, 0, 0.6) 70%, rgba(255, 255, 255, 0.6)), radial-gradient(circle at 50% 50%, rgba(255, 0, 0, 0.2), rgba(255, 255, 255, 0.2))",
                         }}
                       >
@@ -424,12 +435,12 @@ export default function EnhancedKidneyClassification() {
                               ? "Tumor Found"
                               : result.classification === "CYST"
                               ? "Cyst Detected"
-                              : "Issue Detected"}
+                              : result.classification}
                           </p>
                         </div>
                       </div>
                       <div
-                        className=" flex mx-2 mt-3 rounded-lg px-4 py-3 justify-around leading-none border border-[#dad5d5]"
+                        className=" flex md:mx-2 md:mt-3 mt-1 rounded-lg px-4 py-3 justify-around leading-none border border-[#dad5d5]"
                         style={{
                           background:
                             "radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.9), rgba(220, 220, 220, 0.9) 40%, rgba(220, 220, 220, 0.7) 70%, rgba(255, 255, 255, 0.7))",
@@ -448,12 +459,35 @@ export default function EnhancedKidneyClassification() {
                           </p>
                         </div>
                         <div className=" border-l-2 bg-transparent text-[#2e2d2d] font-bold  px-2 leading-none flex justify-center items-center ">
-                          {result.confidence.toFixed(2)}%
+                          {typeof result.confidence === "number"
+                            ? result.confidence.toFixed(2) + "%"
+                            : result.confidence}
                         </div>
                       </div>
-                      <div className="text-center mt-auto w-fit mx-auto flex space-x-4 items-center">
+                      <div
+                        className=" flex md:mx-2 md:mt-3 mt-1 mb-[3vh] rounded-lg px-4 py-3 justify-around leading-none border border-[#dad5d5]"
+                        style={{
+                          background:
+                            "radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.9), rgba(220, 220, 220, 0.9) 40%, rgba(220, 220, 220, 0.7) 70%, rgba(255, 255, 255, 0.7))",
+                        }}
+                      >
+                        <div className=" flex flex-col justify-center">
+                          <p className=" font-medium text-sm text-black/70 pt-1">
+                            Is this a CT Scan ?
+                          </p>
+                          <p className=" font-bold text-black pt-1">
+                            {result.confidence >= 0.5
+                              ? "High Confidence"
+                              : "Low Confidence"}
+                          </p>
+                        </div>
+                        <div className=" border-l-2 bg-transparent text-[#2e2d2d] font-bold  px-2 leading-none flex justify-center items-center ">
+                          {result.ctScanConfidence.toFixed(2) + "%"}
+                        </div>
+                      </div>
+                      <div className="text-center mt-auto w-full md:w-fit md:mx-auto flex space-x-4 items-center">
                         <Button
-                          className="text-center mt-auto w-fit mx-auto"
+                          className="text-center mr-auto mt-auto lg:mx-auto w-fit "
                           onClick={() => downloadReport(result)}
                         >
                           <Download className="mr-2 h-4 w-4" /> Download Report
@@ -467,13 +501,13 @@ export default function EnhancedKidneyClassification() {
                         </Button>
                       </div>
                     </div>
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 items-center">
                       <img
                         src={result.imageUrl}
                         alt="Classified kidney scan"
-                        className=" rounded-xl"
+                        className=" rounded-xl max-h-[300px] max-w-[300px] object-cover"
                       />
-                      <div className=" flex justify-center items-center py-2 bg-[#DDE3E0] rounded-xl">
+                      <div className="lg:mt-auto px-2 flex justify-center items-center py-2 bg-[#DDE3E0] rounded-xl">
                         <p className="text  text-black/70 font-medium">
                           {result.date.toLocaleString()}
                         </p>
@@ -492,8 +526,8 @@ export default function EnhancedKidneyClassification() {
                   transition={{ duration: 0.8, ease: "easeInOut" }}
                 >
                   {" "}
-                  <SparklesIcon />
-                  <span className="font-Articulate font-medium ">
+                  <SparklesIcon className="md:h-6 aspect-square h-4" />
+                  <span className="font-Articulate font-medium md:text-base text-sm">
                     No classification result yet.
                   </span>
                 </motion.p>

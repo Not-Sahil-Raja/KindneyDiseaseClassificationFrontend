@@ -45,7 +45,7 @@ const Home = () => {
         <motion.img
           src="./Kidney_Image.jpg"
           alt="Kidney Image"
-          className="w-full h-[100%] object-cover"
+          className="w-full xl:h-[100%] h-[80%] object-cover"
           style={{
             clipPath: "url(#mask)",
             WebkitClipPath: "url(#mask)",
@@ -63,29 +63,31 @@ const Home = () => {
           animate={{ opacity: 1, filter: "blur(0px)" }}
           transition={{ duration: 0.7, delay: 0.2, ease: "easeInOut" }}
         >
-          <p className=" text-sm lg:text-base 2xl:text-lg font-medium font-Articulate pb-2 pl-3 text-black/60 ">
+          <p className=" text-sm lg:text-base 2xl:text-lg font-medium font-Articulate pb-2 pl-1 lg:pl-3 text-black/60 ">
             Early Detection for a Healthier Future
           </p>
-          <h1 className=" 2xl:text-[8rem] lg:text-[5rem]">Smart</h1>
-          <h1 className="2xl:text-[8rem] lg:text-[5rem]">Kidney Health</h1>
+          <h1 className=" 2xl:text-[8rem] lg:text-[5rem] text-6xl">Smart</h1>
+          <h1 className="2xl:text-[8rem] lg:text-[5rem] text-6xl">
+            Kidney Health
+          </h1>
         </motion.div>
         <motion.div
-          className="absolute bottom-[10%] right-[5%] text-white/60 font-medium rounded-xl max-w-60 px-6 py-5 backdrop-blur-lg bg-[#837b7b4d] border"
+          className="absolute bottom-[60%] xl:bottom-[10%] xs:left-[10%] lg:right-[5%] ml-4 lg:ml-0 text-white/60 font-medium rounded-xl max-w-60 px-2 py-1 lg:px-6 lg:py-5 backdrop-blur-lg bg-[#837b7b4d] border"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.75, delay: 0.5, ease: "easeInOut" }}
         >
-          <div className="text-2xl text-white font-bold font-Articulate pb-2">
+          <div className="text-lg lg:text-2xl text-white font-bold font-Articulate pb-2">
             AI Kidney Classification
           </div>
-          <div className="text-pretty">
+          <div className="text-sm lg:text-pretty">
             AI revolutionizes kidney health by improving early diagnosis,
             personalized treatments, and proactive care, ensuring better
             outcomes for patients.
           </div>
         </motion.div>
         <motion.div
-          className="absolute bottom-[5%] lg:right-[30%] right-[28%]"
+          className="absolute bottom-[25%] lg:bottom-[5%] lg:right-[30%] right-[5%]"
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.75 }}
@@ -112,7 +114,7 @@ const Home = () => {
           className="font-Articulate text-center text-6xl tracking-[-0.02em] text-[#444343] drop-shadow-sm dark:text-white md:text-7xl md:leading-[5rem]"
         />
       </div>
-      <div className="h-screen w-full pt-[10%]">
+      <div className="md:h-screen h-fit w-full pt-[10%]">
         <div className="flex flex-col h-full">
           <motion.div
             className="2xl:text-5xl md:text-3xl font-Articulate w-[50%] pl-[5%] text-[#444343] dark:text-white"
@@ -124,19 +126,21 @@ const Home = () => {
             identifies diseases early, enabling personalized treatments and
             proactive care.
           </motion.div>
-          <div className="h-[60%] w-full px-4 mt-auto mb-[2%] flex items-stretch space-x-5">
+          <div className="h-[60%] w-full px-4 md:mt-auto mt-5 mb-[2%] flex flex-col md:flex-row  items-stretch space-y-5 md:space-y-0 md:space-x-5">
             <motion.div
-              className="h-full flex-[1] pt-[1%]"
+              className="md:h-full md:flex-[1] pt-[1%] md:pb-0 pb-[2%]"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 1 }}
             >
-              <div className="2xl:text-xl md:text-lg font-Articulate pl-[10%] text-[#444343] dark:text-white">
-                <p className="rounded-lg w-fit px-2 border">HOW TO USE</p>
+              <div className="2xl:text-xl md:text-md font-Articulate pl-[10%] text-[#444343] dark:text-white">
+                <p className="rounded-lg w-fit px-2 border whitespace-nowrap">
+                  HOW TO USE
+                </p>
               </div>
             </motion.div>
             <motion.div
-              className="h-full flex-[2] relative"
+              className="md:h-full md:flex-[2] relative"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
@@ -155,7 +159,7 @@ const Home = () => {
               />
             </motion.div>
             <motion.div
-              className="h-full flex-[2] relative"
+              className="md:h-full md:flex-[2] relative"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
@@ -174,7 +178,7 @@ const Home = () => {
               />
             </motion.div>
             <motion.div
-              className="h-full flex-[2] relative"
+              className="md:h-full md:flex-[2] relative"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.6 }}
@@ -214,7 +218,7 @@ const Home = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
             >
-              <div className="flex-[2] text-5xl flex items-center px-5">
+              <div className="flex-[2] text-3xl md:text-5xl flex items-center px-5">
                 50%
               </div>
               <div className="flex-1 flex items-center px-5 border-t leading-none border-[#575656]">
@@ -228,7 +232,7 @@ const Home = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
             >
-              <div className="flex-[2] text-5xl flex items-center px-5">
+              <div className="flex-[2] text-3xl md:text-5xl flex items-center px-5">
                 Normal
               </div>
               <div className="flex-1 flex items-center px-5 border-t leading-none border-[#575656]">
@@ -241,7 +245,7 @@ const Home = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.6 }}
             >
-              <div className="flex-[2] text-5xl flex items-center px-5">
+              <div className="flex-[2] text-3xl md:text-5xl flex items-center px-5">
                 Risk Level
               </div>
               <div className="flex-1 flex items-center px-5 border-t leading-none border-[#575656]">
@@ -252,7 +256,7 @@ const Home = () => {
           </div>
         </div>
         <motion.div
-          className=" flex-1 relative overflow-hidden "
+          className=" hidden md:block flex-1 relative overflow-hidden "
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
@@ -319,7 +323,7 @@ const Home = () => {
       </div>
 
       {/* Footer Section */}
-      <div className="h-screen w-full pt-[5%]">
+      <div className="md:h-screen h-fit w-full pt-[5%]">
         <div className="h-[60%] w-full px-5 py-4">
           <motion.div
             className="flex h-full bg-[#ffebec] rounded-2xl overflow-hidden border"
@@ -327,14 +331,14 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            <div className="px-10 py-4 h-full flex items-center text-7xl text-black/80 font-Articulate">
+            <div className=" px-4 xl:px-10 py-4 h-full flex items-center text-xl md:text-3xl xl:text-7xl whitespace-nowrap lg:whitespace-normal text-black/80 font-Articulate">
               Your health is your greatest asset
               <br /> – protect it!
             </div>
             <img
               src="./Kidney_Image_Footer.png"
               alt="Kidney Image Footer"
-              className="h-full ml-auto object-contain"
+              className="h-full md:aspect-square xl:aspect-auto mr-auto xl:ml-auto object-contain"
             />
           </motion.div>
         </div>
@@ -345,7 +349,7 @@ const Home = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-4xl mb-4 text-[#18261C] flex items-center"
+                className="md:text-4xl text-xl mb-4 text-[#18261C] flex items-center"
               >
                 KidneyHealth AI
               </motion.h3>
