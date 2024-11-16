@@ -106,3 +106,21 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 0, 0, 0.6);
 }
+
+.kidney-image {
+  width: 100%;
+  height: 70%; /* Default height for mobile */
+  object-fit: cover;
+  clip-path: none; /* Default for mobile */
+  border-radius: 1ch;
+  -webkit-clip-path: none;
+}
+
+/* Apply clip-path when not on mobile */
+@media (min-width: 768px) {
+  .kidney-image {
+    height: 100%; /* Adjust height for larger screens */
+    clip-path: url(#mask); /* Apply clip-path */
+    -webkit-clip-path: url(#mask);
+  }
+}

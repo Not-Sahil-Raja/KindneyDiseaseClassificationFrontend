@@ -45,11 +45,11 @@ const Home = () => {
         <motion.img
           src="./Kidney_Image.jpg"
           alt="Kidney Image"
-          className="w-full xl:h-[100%] h-[80%] object-cover"
-          style={{
-            clipPath: "url(#mask)",
-            WebkitClipPath: "url(#mask)",
-          }}
+          className="kidney-image"
+          // style={{
+          //   clipPath: "url(#mask)",
+          //   WebkitClipPath: "url(#mask)",
+          // }}
           initial={{ opacity: 0, filter: "blur(10px)" }}
           animate={{ opacity: 1, filter: "blur(0px)" }}
           transition={{
@@ -67,12 +67,12 @@ const Home = () => {
             Early Detection for a Healthier Future
           </p>
           <h1 className=" 2xl:text-[8rem] lg:text-[5rem] text-6xl">Smart</h1>
-          <h1 className="2xl:text-[8rem] lg:text-[5rem] text-6xl">
+          <h1 className="2xl:text-[8rem] lg:text-[5rem] md:text-6xl text-5xl whitespace-nowrap">
             Kidney Health
           </h1>
         </motion.div>
         <motion.div
-          className="absolute bottom-[60%] xl:bottom-[10%] xs:left-[10%] lg:right-[5%] ml-4 lg:ml-0 text-white/60 font-medium rounded-xl max-w-60 px-2 py-1 lg:px-6 lg:py-5 backdrop-blur-lg bg-[#837b7b4d] border"
+          className="absolute bottom-[70vh] lg:bottom-[10%] xs:left-[10%] lg:right-[5%] ml-4 lg:ml-0 text-white/60 font-medium rounded-xl max-w-60 px-2 py-1 lg:px-6 lg:py-5 backdrop-blur-lg bg-[#837b7b4d] border"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.75, delay: 0.5, ease: "easeInOut" }}
@@ -87,7 +87,7 @@ const Home = () => {
           </div>
         </motion.div>
         <motion.div
-          className="absolute bottom-[25%] lg:bottom-[5%] lg:right-[30%] right-[5%]"
+          className="absolute bottom-[40vh] lg:bottom-[5%] lg:right-[30%] right-[5%]"
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.75 }}

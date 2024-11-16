@@ -12,16 +12,19 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: "easeInOut" }}
     >
-      <motion.div
-        className="flex-2 w-fit pl-6 pr-4 lg:pl-10 lg:pr-14 h-full flex justify-center items-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.5 }}
-      >
-        <h1 className="lg:text-2xl sm:text-sm px-3 py-1 whitespace-nowrap font-Articulate text-white backdrop-blur-sm bg-[#6b706163]  shadow-lg rounded-md">
-          KidneyHealth AI
-        </h1>
-      </motion.div>
+      {" "}
+      <Link href="/">
+        <motion.div
+          className="flex-2 w-fit pl-6 pr-4 lg:pl-10 lg:pr-14 h-full flex justify-center items-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
+          <h1 className="lg:text-2xl sm:text-sm px-3 py-1 whitespace-nowrap font-Articulate text-white backdrop-blur-sm bg-[#6b706163]  shadow-lg rounded-md">
+            KidneyHealth AI
+          </h1>
+        </motion.div>
+      </Link>
       <motion.div
         className="flex-1 h-full flex items-center py-1 space-x-1 lg:space-x-5 lg:px-4"
         initial={{ opacity: 0 }}
@@ -54,7 +57,7 @@ const Navbar = () => {
         </Link>
       </motion.div>
       <motion.div
-        className="w-fit md:pl-4 p-1 sm:pr-6 md:pr-10 h-full flex justify-center items-center"
+        className="w-fit mr-3 md:mr-0 md:pl-4 p-1 sm:pr-6 md:pr-10 h-full flex justify-center items-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.9 }}
