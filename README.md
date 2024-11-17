@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://kidneyhealthai.vercel.app/"><img src="" alt="Kidney Disease AI" width="200"></a>
+  <a href="https://kidneyhealthai.vercel.app/"><img src="https://github.com/user-attachments/assets/6002bda5-59a8-40e4-bd32-29ef11645dda" alt="Kidney Disease AI" width="200"></a>
   <br>
   Kidney Disease AI
   <br>
@@ -15,9 +15,8 @@
 <p align="center">
   <a href="#key-features">Key Features</a> •
   <a href="#how-to-use">How To Use</a> •
-  <a href="#download">Download</a> •
-  <a href="#credits">Credits</a> •
-  <a href="#related">Related</a> •
+  <a href="#usage">Usage</a> •
+  <a href="#technologies-used">Technologies Used</a> •
   <a href="#license">License</a>
 </p>
 
